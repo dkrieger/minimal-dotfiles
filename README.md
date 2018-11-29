@@ -6,6 +6,9 @@ Rather than one big "bootstrap.sh" script, each program has a modular setup
 routine, allowing e.g. utility servers to run a more minimal setup than a
 workstation.
 
+NOTE: Out of the box, only Ubuntu-based distributions support all bootstrapping
+features of these dotfiles.
+
 ## Programs / Utilities
 
 - bash
@@ -37,3 +40,6 @@ workstation.
   - ultraminimal (no plugins)
   - minimal (basic plugins)
   - maximal (all the plugins I like)
+- enable debian compatibility
+- become distro-agnostic
+  - ansible eventually
