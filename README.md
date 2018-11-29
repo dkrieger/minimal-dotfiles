@@ -30,3 +30,10 @@ workstation.
 1. navigate to bashrc-parts/
 2. `enable.sh <part1> [<part2> ...]` to enable parts
 3. `disable.sh <part1> [<part2> ...]` to disable parts
+
+## TODO
+
+- break vim up into parts
+  - ultraminimal (no plugins)
+  - minimal (basic plugins)
+  - maximal (all the plugins I like)
