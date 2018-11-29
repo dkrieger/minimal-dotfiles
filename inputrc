@@ -1,0 +1,8 @@
+# set enable-keypad on
+# "\e[A": history-search-backward
+# "\e[B": history-search-forward
+# "\e[B": next-history
+$include /etc/inputrc
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
+"\e[P": "[3~"

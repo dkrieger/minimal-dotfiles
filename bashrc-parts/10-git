@@ -1,0 +1,113 @@
+# ======== GIT ALIASES FROM oh-my-zsh ========
+# include a subset of oh-my-zsh git aliases based on habit, usefulness, and safety
+
+# https://github.com/robbyrussell/oh-my-zsh/blob/f75d096c1a3863b84cb9788d0934babe4cd3c577/lib/git.zsh
+function git_current_branch() {
+  local ref
+  ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
+  local ret=$?
+  if [[ $ret != 0 ]]; then
+    [[ $ret == 128 ]] && return  # no git repo.
+    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
+  fi
+  echo ${ref#refs/heads/}
+}
+
+# https://github.com/robbyrussell/oh-my-zsh/blob/509a5549008c178e982bc8f728a07a2e2dbc58a9/plugins/git/git.plugin.zsh
+alias g='git'
+
+alias ga='git add'
+alias gaa='git add --all'
+
+alias gb='git branch'
+alias gbda='git branch --no-color --merged | command grep -vE "^(\*|\s*(master|develop|dev)\s*$)" | command xargs -n 1 git branch -d'
+alias gbl='git blame -b -w'
+alias gbs='git bisect'
+
+alias gc='git commit -v'
+alias gc!='git commit -v --amend'
+alias gca='git commit -v -a'
+alias gcam='git commit -a -m'
+alias gcsm='git commit -s -m'
+alias gcb='git checkout -b'
+alias gcf='git config --list'
+alias gco='git checkout'
+alias gcp='git cherry-pick'
+
+alias gd='git diff'
+alias gdca='git diff --cached'
+alias gdcw='git diff --cached --word-diff'
+alias gdct='git describe --tags `git rev-list --tags --max-count=1`'
+alias gds='git diff --staged'
+alias gdt='git diff-tree --no-commit-id --name-only -r'
+alias gdw='git diff --word-diff'
+
+alias gf='git fetch'
+alias gfa='git fetch --all --prune'
+alias gfo='git fetch origin'
+
+alias ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
+alias gpsup='git push --set-upstream origin $(git_current_branch)'
+
+alias ghh='git help'
+
+alias gignore='git update-index --assume-unchanged'
+alias gignored='git ls-files -v | grep "^[[:lower:]]"'
+
+alias gl='git pull'
+alias glg='git log --stat'
+alias glgp='git log --stat -p'
+alias glgg='git log --graph'
+alias glgga='git log --graph --decorate --all'
+alias glgm='git log --graph --max-count=10'
+alias glo='git log --oneline --decorate'
+alias glol="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+alias glols="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --stat"
+alias glod="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'"
+alias glods="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset' --date=short"
+alias glola="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all"
+alias glog='git log --oneline --decorate --graph'
+alias gloga='git log --oneline --decorate --graph --all'
+
+alias gm='git merge'
+alias gmt='git mergetool --no-prompt'
+alias gmtvim='git mergetool --no-prompt --tool=vimdiff'
+
+alias gp='git push'
+alias gpd='git push --dry-run'
+
+alias gr='git remote'
+alias gra='git remote add'
+alias grb='git rebase'
+alias grbm='git rebase master'
+alias grh='git reset'
+alias grhh='git reset --hard'
+alias grm='git rm'
+alias grmc='git rm --cached'
+alias grset='git remote set-url'
+alias grt='cd $(git rev-parse --show-toplevel || echo ".")'
+alias grup='git remote update'
+alias grv='git remote -v'
+
+alias gsb='git status -sb'
+alias gsh='git show'
+alias gsps='git show --pretty=short --show-signature'
+alias gss='git status -s'
+alias gst='git status'
+alias gstl='git stash list'
+alias gsts='git stash show --text'
+alias gstall='git stash --all'
+
+alias gts='git tag -s'
+alias gtv='git tag | sort -V'
+
+alias gunignore='git update-index --no-assume-unchanged'
+alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
+alias gup='git pull --rebase'
+alias gupv='git pull --rebase -v'
+alias gupa='git pull --rebase --autostash'
+alias gupav='git pull --rebase --autostash -v'
+alias glum='git pull upstream master'
+
+alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
+alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'

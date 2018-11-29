@@ -1,0 +1,19 @@
+# define pathadd function if not yet defined
+if [[ "$(type -t pathadd)" != "function" ]]; then
+	if [[ -n "$(type -t pathadd)" ]]; then
+		printf "ERROR: 'pathadd' is already in use\n" >&2
+		exit 1
+	fi
+	# https://superuser.com/a/39995
+	pathadd() {
+	    if [ -d "$1" ] && [[ ":$PATH:" != *":$1:"* ]]; then
+		PATH="${PATH:+"$PATH:"}$1"
+	    fi
+	}
+fi
+
+# hardcoded for now; this bashrc part should eventually be dynamically created
+# by the powerline.sh script, allowing for dynamic powerline_root (and pip bin)
+# definition
+pathadd "$HOME/.local/bin"
+. "$HOME/.local/lib/python3.6/site-packages/powerline/bindings/bash/powerline.sh"

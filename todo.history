@@ -1,0 +1,10 @@
+  632  vim admin.cashortrade.org/lib/fbadminshare.lib.php 
+  633  find / -type d -name powerline 2>/dev/null
+  634  find / -type d -name powerline 2>/dev/null | head -2
+  635  find ~/.local/lib/python3.6/site-packages/powerline -type f -name 'config.json'
+  636  mkdir -p ~/.config/powerline/
+  637  cp ~/.local/lib/python3.6/site-packages/powerline/config_files/config.json ~/.config/powerline/.
+  638  vim ~/.config/powerline/config.json 
+  639  history | head -10
+  640  history | tail -10
+  641  history | tail -10 >~/minimal-dotfiles/todo.history

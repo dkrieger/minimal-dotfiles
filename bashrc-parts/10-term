@@ -1,0 +1,2 @@
+alias st='DISPLAY=:0 st -e tmux'
+alias ssh='TERM=screen ssh'
