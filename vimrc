@@ -75,6 +75,16 @@ endfunction
 command Indent4 call IndentSpaces(4)
 command Indent2 call IndentSpaces(2)
 
+" like ':!', but uses ':term'
+function! Bang(cmd)
+  let l:escaped=substitute(a:cmd, '"', '\\"', 'g')
+  " use `shellescape` ?
+  " let l:escaped=shellescape(a:cmd)
+  " echo l:escaped
+  exe 'term '.&shell.' -c "'.l:escaped.'"'
+endfunction
+command! -nargs=+ Bang call Bang(<q-args>)
+
 " see commands directly defined in this vimrc
 command MyCommands !awk '$1~/^command\!?$/ {$1=""; $0=$0; print $0}' <~/.vimrc
 
@@ -168,9 +178,17 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 
 " CtrlP -- fuzzy finder
-Plug 'ctrlpvim/ctrlp.vim'
-    " Scan for dotfiles and dotdirs
-    let g:ctrlp_show_hidden = 1
+" Plug 'ctrlpvim/ctrlp.vim'
+"     " Scan for dotfiles and dotdirs
+"     let g:ctrlp_show_hidden = 1
+
+" fzf.vim -- fuzzy finder
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
+" Plug '/home/doug/go/src/github.com/junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+
+nnoremap <C-P> :Files %:h<CR>
+autocmd FileType netrw nnoremap <buffer> <C-P> :Files %<CR>
 
 " Vimux -- run commands in nearby tmux pane
 Plug 'dkrieger/vimux'
@@ -223,6 +241,14 @@ Plug 'vito-c/jq.vim'
 
 " Plug 'vim-airline/vim-airline'
 "     let g:airline_powerline_fonts = 1
+
+" vim-go -- Go development plugin for vim
+Plug 'fatih/vim-go', { 'tag': 'v1.18'}
+
+" gocode wasn't finding parts of my libs
+let g:go_info_mode = 'guru'
+au FileType go nmap <leader>i <Plug>(go-info)
+au FileType go nmap <leader>v <Plug>(go-vet)
 
 " end Plug-managed plugins
 call plug#end()
