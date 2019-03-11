@@ -29,6 +29,10 @@
 				{
 					"function": "powerline.segments.shell.last_pipe_status",
 					"priority": 10
+				},
+				{
+					"function": "powerline_kubernetes.kubernetes",
+					"priority": 30
 				}
 			]
 		}],

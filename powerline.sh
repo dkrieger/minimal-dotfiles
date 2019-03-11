@@ -12,9 +12,19 @@ if [[ $SCRIPTPATH != "$(pwd)" ]]; then
 fi
 #### END GUARD ####
 
-sudo apt-get update
-sudo apt-get install -y python3 python3-pip fonts-powerline
-pip3 install powerline-status powerline-gitstatus
+DISTRO="$(</etc/os-release awk -F'=' '$1~/^NAME$/ {print $2}')"
+if [[ "$DISTRO" == "Fedora" ]]; then
+	dnf check-update
+	sudo dnf install -y python3 python3-pip powerline-fonts
+elif [[ "$DISTRO" == "Ubuntu" ]]; then
+	sudo apt-get update
+	sudo apt-get install -y python3 python3-pip fonts-powerline
+else
+	printf "$DISTRO not supported\n" >&2
+	exit 1
+fi
+pip3 install --user powerline-status powerline-gitstatus
+pip3 install --user git+https://github.com/dkrieger/powerline-kubernetes.git
 mkdir -p ~/.config/powerline/colorschemes
 mkdir -p ~/.config/powerline/themes/shell
 ln -f -s "$(pwd)/powerline/colorschemes/default.json" ~/.config/powerline/colorschemes/default.json

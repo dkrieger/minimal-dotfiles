@@ -29,6 +29,8 @@
 		"gitstatus_untracked":        { "fg": "solarized:orange", "bg": "solarized:base02", "attrs": [] },
 		"gitstatus_stashed":          { "fg": "solarized:blue",        "bg": "solarized:base02", "attrs": [] },
 		"gitstatus:divider":          { "fg": "solarized:base1",           "bg": "solarized:base02", "attrs": [] },
+		"kubernetes":                 { "fg": "solarized:base3",           "bg": "gray2", "attrs": [] },
+		"kubernetes:divider":         { "fg": "solarized:base3",           "bg": "gray2", "attrs": [] },
 		"email_alert_gradient":       { "fg": "solarized:base3", "bg": "yellow_orange_red", "attrs": [] },
 		"email_alert":                "warning:regular",
 		"cwd":                        "information:additional",
