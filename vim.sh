@@ -12,7 +12,22 @@ if [[ $SCRIPTPATH != "$(pwd)" ]]; then
 fi
 #### END GUARD ####
 
-sudo add-apt-repository ppa:jonathonf/vim
-sudo apt-get update
-sudo apt-get install -y vim
+DISTRO="$(</etc/os-release awk -F'=' '$1~/^NAME$/ {print $2}')"
+
+if [[ "$DISTRO" == "Fedora" ]]; then
+	dnf check-update
+	sudo dnf install -y vim-common vim-X11
+	<<'EOF' sudo tee -a /usr/local/bin/vim
+#!/bin/bash
+gvim --servername GVIM -v $@
+EOF
+elif [[ "$DISTRO" == "Ubuntu" ]]; then
+	sudo add-apt-repository ppa:jonathonf/vim
+	sudo apt-get update
+	sudo apt-get install -y vim
+else
+	printf "$DISTRO not supported\n" >&2
+	exit 1
+fi
 ln -s "$(pwd)/vimrc" ~/.vimrc
+

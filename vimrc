@@ -250,6 +250,9 @@ let g:go_info_mode = 'guru'
 au FileType go nmap <leader>i <Plug>(go-info)
 au FileType go nmap <leader>v <Plug>(go-vet)
 
+" DrawIt -- Ascii drawing plugin: lines, ellipses, arrows, fills, and more!
+Plug 'vim-scripts/DrawIt'
+
 " end Plug-managed plugins
 call plug#end()
 
