@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=st
+Comment=Suckless Terminal
+Exec=st -f "PowerlineSymbols,DejaVu Sans Mono:size=12" -e tmux
+Icon=st.png
+Terminal=false
