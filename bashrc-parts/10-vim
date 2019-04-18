@@ -1,0 +1,4 @@
+DISTRO="$(</etc/os-release awk -F'=' '$1~/^NAME$/ {print $2}')"
+if [[ "$DISTRO" == "Fedora" ]]; then
+	alias vim="gvim -v"
+fi
