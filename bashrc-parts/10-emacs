@@ -1,0 +1,11 @@
+#!/bin/bash
+em(){
+  2>&1 nohup emacsclient -a "" -c >/dev/null "$@" &
+}
+killem(){
+  elisp="(save-buffers-kill-emacs)"
+  if [[ "$1" == force ]]; then
+    elisp="(kill-emacs)"
+  fi
+  emacsclient -e "$elisp"
+}
