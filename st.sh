@@ -22,5 +22,13 @@ wget https://st.suckless.org/patches/solarized/st-no_bold_colors-0.7.diff
 git apply st-no_bold_colors-0.7.diff
 wget https://st.suckless.org/patches/solarized/st-solarized-dark-0.7.diff
 git apply st-solarized-dark-0.7.diff
-sudo apt-get install -y x11-xserver-utils libx11-dev libxft-dev
+DISTRO="$(</etc/os-release awk -F'=' '$1~/^NAME$/ {print $2}')"
+if [[ "$DISTRO" == "Fedora" ]]; then
+	sudo dnf install -y make libX11-devel libXft-devel
+elif [[ "$DISTRO" == "Ubuntu" ]]; then
+	sudo apt-get install -y x11-xserver-utils libx11-dev libxft-dev
+else
+	printf "$DISTRO not supported\n" >&2
+	exit 1
+fi
 sudo make clean install
