@@ -1,0 +1,29 @@
+#+FILETAGS: :snippets:bash:
+* emacs                                                               :emacs:
+
+#+name: start-emacs-server
+#+begin_src bash
+emacs --daemon
+#+end_src
+
+#+name: start-emacs-client
+#+begin_src bash
+# note: the `-a ""` part will start emacs server if not running
+nohup emacsclient -a "" -c >/dev/null 2>&1 &
+#+end_src
+
+#+name: recover-frozen-emacs
+#+begin_src bash
+# https://emacs.stackexchange.com/questions/21643/what-do-i-do-when-emacs-is-frozen
+pkill -SIGUSR2 emacs
+#+end_src
+
+#+name: kill-emacs-server
+#+begin_src emacs-lisp
+;; https://unix.stackexchange.com/questions/150341/how-to-stop-emacs-server
+;; vanilla emacs: M-0 M-x server-mode
+;; spacemacs: SPC SPC server-mode C-u 0 RET
+(server-mode 0)
+#+end_src
+
+#+RESULTS:
