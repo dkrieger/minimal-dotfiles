@@ -10,7 +10,7 @@ pathadd() {
 
 # https://serverfault.com/a/41524
 include() {
-    for FILE in $( find "$1" -type f -print | sort )
+    for FILE in $( find -L "$1" -type f -print | sort )
     do
 	printf "sourcing $FILE\n"
 	source $FILE
