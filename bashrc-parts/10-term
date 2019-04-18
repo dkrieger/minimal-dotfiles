@@ -1,2 +1,2 @@
-alias st='DISPLAY=:0 st -e tmux'
+alias st='DISPLAY=:0 st -f "PowerlineSymbols,DejaVu Sans Mono:size=12" -e tmux'
 alias ssh='TERM=screen ssh'
