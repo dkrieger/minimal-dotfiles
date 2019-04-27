@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     kubernetes ; private layer in ~/.emacs.d/private
      ruby
      pdf-tools
      latex
@@ -46,7 +47,7 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
-     ;; auto-completion
+     auto-completion
      ;; better-defaults
      emacs-lisp
      git
@@ -63,7 +64,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '( magit kubernetes-tramp )
+   dotspacemacs-additional-packages '()
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -523,15 +524,6 @@ you should place your code here."
 
   ;;;;** capture
   (setq org-default-notes-file (concat org-directory "/inbox.org"))
-
-  ;;;;* packages
-    ;; kubernetes-el porcelain
-    (use-package kubernetes
-      :ensure t
-      :commands (kubernetes-overview))
-    (use-package kubernetes-evil
-      :ensure t
-      :after kubernetes)
 
   )
 
