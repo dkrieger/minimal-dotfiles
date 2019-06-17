@@ -5,15 +5,15 @@
     kubernetes-evil
     ))
 
-(defun kubernetes/init-kubernetes ()
+(defun kubernetes/init-kubernetes-tramp ()
   (use-package kubernetes-tramp
     :ensure t))
 
 (defun kubernetes/init-kubernetes ()
-    (use-package kubernetes
-      :ensure t
-      :defer t
-      :commands (kubernetes-overview)))
+  (use-package kubernetes
+    :ensure t
+    :defer t
+    :commands (kubernetes-overview)))
 
 (defun kubernetes/init-kubernetes-evil ()
     (use-package kubernetes-evil
