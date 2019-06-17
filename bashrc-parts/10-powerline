@@ -16,4 +16,4 @@ fi
 # by the powerline.sh script, allowing for dynamic powerline_root (and pip bin)
 # definition
 pathadd "$HOME/.local/bin"
-. $HOME/.local/lib/python3.*/site-packages/powerline/bindings/bash/powerline.sh
+. $HOME/.local/lib/python3.*/site-packages/powerline/bindings/bash/powerline.sh 2>/dev/null
