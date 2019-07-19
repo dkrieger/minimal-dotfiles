@@ -1,0 +1,7 @@
+output * bg /home/doug/Pictures/low-poly-design.jpg fill
+output eDP-1 {
+    position 0 0
+    resolution 2560x1440
+    scale 1.5
+}
+output DP-1 pos 1707 0

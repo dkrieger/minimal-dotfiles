@@ -1,0 +1,1 @@
+bindsym $mod+Shift+e exec 'swaynag -m '"'"'Quit Sway? (Save work first!)'"'"' -B Quit '"'"'swaymsg "exit"'"'"
