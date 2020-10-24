@@ -253,6 +253,9 @@ au FileType go nmap <leader>v <Plug>(go-vet)
 " DrawIt -- Ascii drawing plugin: lines, ellipses, arrows, fills, and more!
 Plug 'vim-scripts/DrawIt'
 
+" OpenSCAD
+Plug 'sirtaj/vim-openscad'
+
 " end Plug-managed plugins
 call plug#end()
 
